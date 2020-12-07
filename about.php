@@ -19,7 +19,7 @@
             <div class="navbar">
                 <div class="logo">
                     <!-- ini buat pasang gambar logo startup kita lebarnya diatur 125px -->
-                    <a href="index.php"><img src="images/logo.png" width="125px"></a>
+                    <a href="index.php"><img src="images/NusantaraDeals.png" width="125px"></a>
                 </div>
                 <nav>
                     <!-- ini list buat menu-menu di kanan pojok atas -->
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="images/logo-white.png">
+                    <img src="images/NusantaraDeals-White.png">
                     <p>Our purpose is to sutainably make the pleasure and benefits of sports accessible to the many.</p>
                 </div>
                 <div class="footer-col-3">

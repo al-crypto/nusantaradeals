@@ -15,11 +15,12 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 // We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT password, email FROM user WHERE id = ?');
+$stmt = $con->prepare('SELECT username, name, email, birth, phone, address FROM user WHERE id = ?');
+
 // In this case we can use the account ID to get the account info.
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($password, $email);
+$stmt->bind_result($username, $name, $email, $birth, $phone, $address);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -45,27 +46,64 @@ $stmt->close();
             <div class="navbar">
                 <div class="logo">
                     <!-- ini buat pasang gambar logo startup kita lebarnya diatur 125px -->
-                    <a href="index.php"><img src="images/logo.png" width="125px"></a>
+                    <a href="index.php"><img src="images/NusantaraDeals.png" width="125px"></a>
                 </div>
                 <nav>
                     <!-- ini list buat menu-menu di kanan pojok atas -->
                     <ul id="MenuItems">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="about.php">About</a></li>
                         <li><a href="products.php">Products</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="contact.php">Contact</a></li>
-                        <li><a href="account.php"><strong>My Account</strong></a></li>
+                        <li><a href="logout.php"><strong>LOG OUT</strong></a></li>
                     </ul>
                 </nav>
                 <a href="cart.php"><img src="images/cart.png" width="30px" height="30px"></a>
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
 
-            <div class="row" style="padding-bottom: 100px;">
-                <div class="col-2">
-                    <h1>My Account</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="logout.php" class="btn">Log Out</a>
+            <div class="profile-div">
+                <h1>Profile</h1>
+                <div class="profile-header">
+                    <div class="profile-header-text">
+                        <div>Welcome back, <?= $name ?>!</div>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <strong>Account Details</strong>
+                    <form action="">
+                        <div class="profile-form">
+                            <p>
+                                <label for="id">ID</label>
+                                <input type="text" name="id" id="id" value="<?= $_SESSION['id'] ?>" disabled>
+                            </p>
+                            <p>
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" value="<?= $username ?>" disabled>
+                            </p>
+                            <p>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" value="<?= $email ?>" disabled>
+                            </p>
+                            <p>
+                                <label for="name">Name</label>
+                                <input type="name" name="name" id="name" value="<?= $name ?>" disabled>
+                            </p>
+                            <p>
+                                <label for="birth">Birth Date</label>
+                                <input type="date" name="birth" id="birth" value="<?= $birth ?>" disabled>
+                            </p>
+                            <p>
+                                <label for="phone">Phone</label>
+                                <input type="number" name="phone" id="phone" value="<?= $phone ?>" disabled>
+                            </p>
+                            <p>
+                                <label for="address">Address</label>
+                                <input type="text" name="addres" id="address" value="<?= $address ?>" disabled>
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -85,7 +123,7 @@ $stmt->close();
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="images/logo-white.png">
+                    <img src="images/NusantaraDeals-White.png">
                     <p>Our purpose is to sutainably make the pleasure and benefits of sports accessible to the many.</p>
                 </div>
                 <div class="footer-col-3">

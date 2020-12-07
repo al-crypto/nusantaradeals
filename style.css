@@ -1,181 +1,290 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-body{
+
+body {
 	font-family: 'Poppins', sans-serif;
 }
-.navbar{
-	display: flex; /* flexibel mudah diatur */
-	align-items: center; /*komponen navbar rata ke tengah vertikal */
-	padding: 20px; /* kasih jarak(padding) 20px dari atas kanan bawah kiri */
+
+.navbar {
+	display: flex;
+	/* flexibel mudah diatur */
+	align-items: center;
+	/*komponen navbar rata ke tengah vertikal */
+	padding: 20px;
+	/* kasih jarak(padding) 20px dari atas kanan bawah kiri */
 }
-nav{
-	flex : 1 ; /* komponen nav bisa mengisi seluruh ruang kosong di bagian navbar */
-	text-align: right; /* komponen navnya rata ke kanan */
+
+nav {
+	flex: 1;
+	/* komponen nav bisa mengisi seluruh ruang kosong di bagian navbar */
+	text-align: right;
+	/* komponen navnya rata ke kanan */
 }
-nav ul{
-	display : inline-block; /* biar komponen nav berjejer datar */ 
-	list-style-type: none; /* gapake style listing bullets numbering apalah itu */
+
+nav ul {
+	display: inline-block;
+	/* biar komponen nav berjejer datar */
+	list-style-type: none;
+	/* gapake style listing bullets numbering apalah itu */
 }
-nav ul li{
-	display : inline-block; /*biar komponen nav berjejer datar */
-	margin-right: 20px; /* biar ada space 20px dari kanan di masing - masing komponen nav */  
+
+nav ul li {
+	display: inline-block;
+	/*biar komponen nav berjejer datar */
+	margin-right: 20px;
+	/* biar ada space 20px dari kanan di masing - masing komponen nav */
 }
-a{
-	text-decoration: none; /* biar ga ada embel - embel dekorasi garis bawah segala macem lah */
-	color: #555; /* warnain komponen navnya jadi warna abu abu kece */
+
+a {
+	text-decoration: none;
+	/* biar ga ada embel - embel dekorasi garis bawah segala macem lah */
+	color: #555;
+	/* warnain komponen navnya jadi warna abu abu kece */
 }
-p{
-	color: #555; /* warnain komponen p jadi abu-abu */
+
+p {
+	color: #555;
+	/* warnain komponen p jadi abu-abu */
 }
-.container{
-	max-width: 1300px; /*membataskan komponen container selebar 1300px saja */
-	margin : auto; /* komponen container jadi auto rata rapi ke tengah */
-	padding-left: 25px; /*kasi space (padding kiri) 25px */
-	padding-right: 25px; /*kasi space (padding kanan) 25px */
+
+.container {
+	max-width: 1300px;
+	/*membataskan komponen container selebar 1300px saja */
+	margin: auto;
+	/* komponen container jadi auto rata rapi ke tengah */
+	padding-left: 25px;
+	/*kasi space (padding kiri) 25px */
+	padding-right: 25px;
+	/*kasi space (padding kanan) 25px */
+	padding-bottom: 1px;
 }
-.row{
-	display: flex; /*biar gampang diatur */
-	align-items: center; /*rata tengah vertikal*/
-	flex-wrap: wrap; /* kontennya dipindahkan ke baris baru bila sudah memenuhi lebar containernya */
-	justify-content: space-around; /*konten didistribusikan secara merata dalam container dengan ruang yang sama di sekitarnya */
+
+.row {
+	display: flex;
+	/*biar gampang diatur */
+	align-items: center;
+	/*rata tengah vertikal*/
+	flex-wrap: wrap;
+	/* kontennya dipindahkan ke baris baru bila sudah memenuhi lebar containernya */
+	justify-content: space-around;
+	/*konten didistribusikan secara merata dalam container dengan ruang yang sama di sekitarnya */
 }
-.col-2{
-	flex-basis: 50%; /* mengatur ukuran flex items */
-	min-width: 300px; /* lebar minimal 300px */
+
+.col-2 {
+	flex-basis: 50%;
+	/* mengatur ukuran flex items */
+	min-width: 300px;
+	/* lebar minimal 300px */
 }
-.col-2 img{
-	max-width: 100%; /* lebar maksimal image dibuat 100% biar ga gede gede amat */
-	padding: 50px 0; /* padding(top bottom) 50px padding(right left) 0px */
+
+.col-2 img {
+	max-width: 100%;
+	/* lebar maksimal image dibuat 100% biar ga gede gede amat */
+	padding: 50px 0;
+	/* padding(top bottom) 50px padding(right left) 0px */
 }
-.col-2 h1{
-	font-size: 50px; /* ukuran font h1 jadi 50px */
-	line-height: 60px; /* jarak antar paragraf 60px */
-	margin: 25px 0; /* margin(top bottom) 25px margin(right left) 0px */
+
+.col-2 h1 {
+	font-size: 50px;
+	/* ukuran font h1 jadi 50px */
+	line-height: 60px;
+	/* jarak antar paragraf 60px */
+	margin: 25px 0;
+	/* margin(top bottom) 25px margin(right left) 0px */
 }
-.btn{
-	display: inline-block; /* biar berjejer datar aja*/
-	background: #ff523b; /* warna background tombolnya jadi merah */
-	color: #fff; /* warna tulisannya jadi putih */
-	padding: 8px 30px; /* padding(top bottom) 8px padding(right left) 30px */
-	margin: 30px 0; /*margin(top bottom) 30px margin(right left) 0px */
-	border-radius: 30px; /*biar di tiap sudut squarenya ada kelengkungan sebesar 30px */
-	transition: background 0.5s; /*kasi transisi saat perubahan background */
+
+.btn {
+	display: inline-block;
+	/* biar berjejer datar aja*/
+	background: #ff523b;
+	/* warna background tombolnya jadi merah */
+	color: #fff;
+	/* warna tulisannya jadi putih */
+	padding: 8px 30px;
+	/* padding(top bottom) 8px padding(right left) 30px */
+	margin: 30px 0;
+	/*margin(top bottom) 30px margin(right left) 0px */
+	border-radius: 30px;
+	/*biar di tiap sudut squarenya ada kelengkungan sebesar 30px */
+	transition: background 0.5s;
+	/*kasi transisi saat perubahan background */
 }
-.btn:hover{
-	background: #563434; /* ubah warna background */
+
+.btn:hover {
+	background: #563434;
+	/* ubah warna background */
 }
-.header{
-	background: radial-gradient(#fff,#ffd6d6); /* kasih gradien warna radial di belakang */
+
+.header {
+	background: radial-gradient(#fff, #ffd6d6);
+	/* kasih gradien warna radial di belakang */
 }
-.header .row{
-	margin-top: 70px;  /*kasih jarak margin 70px dari atas untuk komponen row biar makin luas aja*/
+
+.header .row {
+	margin-top: 70px;
+	/*kasih jarak margin 70px dari atas untuk komponen row biar makin luas aja*/
 }
-.categories{
-	margin: 70px 0; /*margin(top bottom) 70px margin(right left) 0px */
+
+.categories {
+	margin: 70px 0;
+	/*margin(top bottom) 70px margin(right left) 0px */
 }
-.col-3{
-	flex-basis: 30%; /* mengatur ukuran flex items */
-	min-width: 250px; /* lebar minimal 250px */
-	margin-bottom: 30px; /* margin bawah sebesar 30px */
+
+.col-3 {
+	flex-basis: 30%;
+	/* mengatur ukuran flex items */
+	min-width: 250px;
+	/* lebar minimal 250px */
+	margin-bottom: 30px;
+	/* margin bawah sebesar 30px */
 }
-.col-3 img{
-	max-width: 100%; /* lebar maksimal image dibuat 100% biar ga gede gede amat */
+
+.col-3 img {
+	max-width: 100%;
+	/* lebar maksimal image dibuat 100% biar ga gede gede amat */
 }
-.small-container{
-	max-width: 1080px; /*lebar maksimal 1080px*/
-	margin: auto; /* automatic margin seluruh sisi */
-	padding-left: 25px; /*padding kiri sebesar 25px */
-	padding-right: 25px; /*padding kanan sebesar 25px */
+
+.small-container {
+	max-width: 1080px;
+	/*lebar maksimal 1080px*/
+	margin: auto;
+	/* automatic margin seluruh sisi */
+	padding-left: 25px;
+	/*padding kiri sebesar 25px */
+	padding-right: 25px;
+	/*padding kanan sebesar 25px */
 }
-.col-4{
-	flex-basis: 25%; /* mengatur ukuran flex items */
-	padding: 10px; /* kasih jarak(padding) 10px dari atas kanan bawah kiri */
-	min-width: 200px; /* lebar minimal 200px */
-	margin-bottom: 50px; /* margin bawah sebesar 50px */
+
+.col-4 {
+	flex-basis: 25%;
+	/* mengatur ukuran flex items */
+	padding: 10px;
+	/* kasih jarak(padding) 10px dari atas kanan bawah kiri */
+	min-width: 200px;
+	/* lebar minimal 200px */
+	margin-bottom: 50px;
+	/* margin bawah sebesar 50px */
 	transition: transform 0.5s;
 }
-.col-4 img{
-	max-width: 100%; /* lebar maksimal image dibuat 100% biar ga gede gede amat */
+
+.col-4 img {
+	max-width: 100%;
+	/* lebar maksimal image dibuat 100% biar ga gede gede amat */
 }
-.title{
-	text-align: center; /*teks rata tengah */
-	margin: 0 auto 80px; /*margin top 0 (right left) auto bottom 80px */
-	position: relative; /* biar bisa pindah pindah */
-	line-height: 60px; /* jarak antar paragraf 60px */
+
+.title {
+	text-align: center;
+	/*teks rata tengah */
+	margin: 0 auto 80px;
+	/*margin top 0 (right left) auto bottom 80px */
+	position: relative;
+	/* biar bisa pindah pindah */
+	line-height: 60px;
+	/* jarak antar paragraf 60px */
 	color: #555;
 }
-.title::after{
-	content: ''; /* kosongin aja */
-	background: #ff523b; /* warna background */
-	width: 80px; /* lebarnya */
-	height: 5px; /* tingginya */
-	border-radius: 5px; /* kelengkungan tiap sudut */
-	position: absolute; /* ngambang */
-	bottom: 0; /*biar di bawah tulisan persis */
-	left: 50%; /* biar ke tengah aja */
-	transform: translateX(-50%); /*memindahkan elemen sepanjang sumbu horizontal */
+
+.title::after {
+	content: '';
+	/* kosongin aja */
+	background: #ff523b;
+	/* warna background */
+	width: 80px;
+	/* lebarnya */
+	height: 5px;
+	/* tingginya */
+	border-radius: 5px;
+	/* kelengkungan tiap sudut */
+	position: absolute;
+	/* ngambang */
+	bottom: 0;
+	/*biar di bawah tulisan persis */
+	left: 50%;
+	/* biar ke tengah aja */
+	transform: translateX(-50%);
+	/*memindahkan elemen sepanjang sumbu horizontal */
 }
-h4{
-	color: #555; /*warna abu-abu*/
-	font-weight: normal; /*ketebalan font normal*/
+
+h4 {
+	color: #555;
+	/*warna abu-abu*/
+	font-weight: normal;
+	/*ketebalan font normal*/
 }
-.col-4 p{
-	font-size: 14px; /*ukuran font harga*/
+
+.col-4 p {
+	font-size: 14px;
+	/*ukuran font harga*/
 }
-.rating .fa{
-	color: #ff523b; /*ubah warna bintang rating jadi oren*/
+
+.rating .fa {
+	color: #ff523b;
+	/*ubah warna bintang rating jadi oren*/
 }
-.col-4:hover{
-	transform: translateY(-5px); /* gerak sepanjang sumbu y */
+
+.col-4:hover {
+	transform: translateY(-5px);
+	/* gerak sepanjang sumbu y */
 }
 
 /*----offer------*/
 
-.offer{
-	background: radial-gradient(#fff,#ffd6d6); /* kasih gradien warna radial di belakang */
-	margin-top: 80px; /* margin atas sebesar 80px */
-	padding: 30px 0; /*padding(top-bottom) 30px padding(right-left) 0 */
+.offer {
+	background: radial-gradient(#fff, #ffd6d6);
+	/* kasih gradien warna radial di belakang */
+	margin-top: 80px;
+	/* margin atas sebesar 80px */
+	padding: 30px 0;
+	/*padding(top-bottom) 30px padding(right-left) 0 */
 }
-.col-2 .offer-img{
+
+.col-2 .offer-img {
 	padding: 50px;
 }
-small{
+
+small {
 	color: #555;
 }
 
 /*--------testimonial------*/
 
-.testimonial{
+.testimonial {
 	padding-top: 100px;
 }
-.testimonial .col-3{
+
+.testimonial .col-3 {
 	text-align: center;
 	padding: 40px 20px;
-	box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+	box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	transition: transform 0.5s;
 }
-.testimonial .col-3 img{
+
+.testimonial .col-3 img {
 	width: 50px;
 	margin-top: 20px;
 	border-radius: 50%;
 }
-.testimonial .col-3:hover{
+
+.testimonial .col-3:hover {
 	transform: translateY(-10px);
 }
-.fa.fa-quote-left{
+
+.fa.fa-quote-left {
 	font-size: 34px;
 	color: #ff523b;
 }
-.col-3 p{
+
+.col-3 p {
 	font-size: 12px;
 	margin: 12px 0;
 	color: #777;
 }
-.testimonial .col-3 h3{
+
+.testimonial .col-3 h3 {
 	font-weight: 600;
 	color: #555;
 	font-size: 16px;
@@ -183,83 +292,99 @@ small{
 
 /*--------brands------*/
 
-.brands{
+.brands {
 	margin: 100px auto;
 }
-.col-5{
+
+.col-5 {
 	width: 160px;
 }
-.col-5 img{
+
+.col-5 img {
 	width: 100%;
 	cursor: pointer;
 	filter: grayscale(100%);
 }
-.col-5 img:hover{
+
+.col-5 img:hover {
 	filter: grayscale(0);
 }
 
 /*--------footer------*/
 
-.footer{
+.footer {
 	background: #000;
 	color: #8a8a8a;
 	font-size: 14px;
 	padding: 60px 0 20px;
 }
-.footer p{
+
+.footer p {
 	color: #8a8a8a;
 }
-.footer h3{
+
+.footer h3 {
 	color: #fff;
-	margin-bottom: 20px; 
+	margin-bottom: 20px;
 }
-.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4{
+
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
 	min-width: 250px;
 	margin-bottom: 20px;
 }
-.footer-col-1{
+
+.footer-col-1 {
 	flex-basis: 30%;
 }
-.footer-col-2{
+
+.footer-col-2 {
 	flex: 1;
 	text-align: center;
 }
-.footer-col-2 img{
+
+.footer-col-2 img {
 	width: 180px;
 	margin-bottom: 20px;
 }
 
-.footer-col-3, .footer-col-4{
+.footer-col-3, .footer-col-4 {
 	flex-basis: 12%;
 	text-align: center;
 }
-ul{
-	list-style-type: none; 
+
+ul {
+	list-style-type: none;
 }
-.app-logo{
+
+.app-logo {
 	margin-top: 20px;
 }
-.app-logo img{
+
+.app-logo img {
 	width: 140px;
 }
-.footer hr{
+
+.footer hr {
 	border: none;
 	background: #b5b5b5;
 	height: 1px;
 	margin: 20px 0;
 }
-.copyright{
+
+.copyright {
 	text-align: center;
 }
-.menu-icon{
+
+.menu-icon {
 	width: 28px;
 	margin-left: 20px;
 	display: none;
 }
+
 /*--------media query for menu -------------*/
 
-@media only screen and (max-width: 800px){
-	nav ul{
+@media only screen and (max-width: 800px) {
+	nav ul {
 		position: absolute;
 		top: 70px;
 		left: 0;
@@ -268,16 +393,16 @@ ul{
 		overflow: hidden;
 		transition: max-height 0.5s;
 	}
-	nav ul li{
+	nav ul li {
 		display: block;
 		margin-right: 50px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
-	nav ul li a{
+	nav ul li a {
 		color: #fff;
 	}
-	.menu-icon{
+	.menu-icon {
 		display: block;
 		cursor: pointer;
 	}
@@ -285,21 +410,25 @@ ul{
 
 /*--------------All Products Page--------------*/
 
-.row-2{
+.row-2 {
 	justify-content: space-between;
 	margin: 100px auto 50px;
 }
-select{
+
+select {
 	border: 1px solid #ff523b;
 	padding: 5px;
 }
-select:focus{
+
+select:focus {
 	outline: none;
 }
-.page-btn{
+
+.page-btn {
 	margin: 0 auto 80px;
 }
-.page-btn span{
+
+.page-btn span {
 	display: inline-block;
 	border: 1px solid #ff523b;
 	margin-left: 10px;
@@ -309,34 +438,39 @@ select:focus{
 	line-height: 40px;
 	cursor: pointer;
 }
-.page-btn span:hover{
+
+.page-btn span:hover {
 	background: #ff523b;
 	color: #fff;
 }
 
-
 /*----------single product deatails---------*/
 
-.single-product{
+.single-product {
 	margin-top: 80px;
 }
-.single-product .col-2 img{
+
+.single-product .col-2 img {
 	padding: 0;
 }
-.single-product .col-2{
+
+.single-product .col-2 {
 	padding: 20px;
 }
-.single-product h4{
+
+.single-product h4 {
 	margin: 20px 0;
 	font-size: 22px;
 	font-weight: bold;
 }
-.single-product select{
+
+.single-product select {
 	display: block;
 	padding: 10px;
 	margin-top: 20px;
 }
-.single-product input{
+
+.single-product input {
 	width: 50px;
 	height: 40px;
 	padding-left: 10px;
@@ -344,94 +478,111 @@ select:focus{
 	margin-right: 10px;
 	border: 1px solid #ff523b;
 }
-input:focus{
+
+input:focus {
 	outline: none;
 }
-.single-product .fa{
+
+.single-product .fa {
 	color: #ff523b;
 	margin-left: 10px;
 }
-.small-img-row{
+
+.small-img-row {
 	display: flex;
 	justify-content: space-between;
 }
-.small-img-col{
+
+.small-img-col {
 	flex-basis: 24%;
 	cursor: pointer;
 }
 
 /*----------- cart items ----------*/
 
-.cart-page{
+.cart-page {
 	margin: 80px auto;
 }
-table{
+
+table {
 	width: 100%;
 	border-collapse: collapse;
 }
-.cart-info{
+
+.cart-info {
 	display: flex;
 	flex-wrap: wrap;
 }
-th{
+
+th {
 	text-align: left;
 	padding: 5px;
 	color: #fff;
 	background: #ff523b;
 	font-weight: normal;
 }
-td{
+
+td {
 	padding: 10px 5px;
 }
-td input{
+
+td input {
 	width: 40px;
 	height: 30px;
 	padding: 5px;
 }
-td a{
+
+td a {
 	color: #ff523b;
 	font-size: 12px;
 }
-td img{
+
+td img {
 	width: 80px;
 	height: 80px;
 	margin-right: 10px;
 }
-.total-price{
+
+.total-price {
 	display: flex;
 	justify-content: flex-end;
 }
-.total-price table{
+
+.total-price table {
 	border-top: 3px solid #ff523b;
 	width: 100%;
 	max-width: 400px;
 }
-td:last-child{
-	text-align: right;
-}
-th:last-child{
+
+td:last-child {
 	text-align: right;
 }
 
+th:last-child {
+	text-align: right;
+}
 
 /*------------ account page ----*/
 
-.account-page{
+.account-page {
 	padding: 50px 0;
-	background: radial-gradient(#fff,#ffd6d6);
+	background: radial-gradient(#fff, #ffd6d6);
 }
-.form-container{
+
+.form-container {
 	background: #fff;
 	width: 300px;
-	height: 400px;
+	height: 500px;
+	border-radius: 10px;
 	position: relative;
 	text-align: center;
 	padding: 20px 0;
 	margin: auto;
-	box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+	box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 }
-.form-container span{
+
+.form-container span {
 	font-weight: bold;
 	padding: 0 10px;
 	color: #555;
@@ -439,42 +590,53 @@ th:last-child{
 	width: 100px;
 	display: inline-block;
 }
-.form-btn{
+
+.form-btn {
 	display: inline-block;
 }
-.form-container form{
+
+.form-container form {
 	max-width: 300px;
 	padding: 0 20px;
 	position: absolute;
 	top: 130px;
 	transition: transform 1s;
 }
-form input{
+
+#LoginForm {
+	left: -300px;
+	margin-top: 50px;
+}
+
+#RegForm {
+	top: 70px;
+	left: 0;
+}
+
+form input {
 	width: 100%;
 	height: 30px;
 	margin: 10px 0;
 	padding: 0 10px;
 	border: 1px solid #ccc;
 }
-form .btn{
+
+form .btn {
 	width: 100%;
 	border: none;
 	cursor: pointer;
 	margin: 10px 0;
 }
-form .btn:focus{
+
+form .btn:focus {
 	outline: none;
 }
-#LoginForm{
-	left: -300px;
-}
-#RegForm{
-	left: 0;
-}
-form a{
+
+form a {
 	font-size: 12px;
 }
-#Indicator{
+
+#Indicator {
 	width: 100px;
 	border: none;
 	background: #ff523b;
@@ -484,26 +646,93 @@ form a{
 	transition: transform 1s;
 }
 
+/*------------ profile page ------------*/
+
+.profile-div {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	background-color: white;
+	border-radius: 10px;
+	padding-top: 60px;
+	padding-left: 80px;
+	padding-right: 80px;
+	padding-bottom: 40px;
+}
+
+.profile-header {
+	margin-top: 20px;
+}
+
+.profile-header-text {
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.profile-header-image {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 40px;
+}
+
+.profile-header-text {
+	display: inline-block;
+}
+
+.change-photo {
+	margin-top: 10px;
+}
+
+.profile-details {
+	margin-top: 20px;
+}
+
+.profile-form {
+	display: table;
+}
+
+.profile-form p {
+	display: table-row;
+}
+
+.profile-form label {
+	display: table-cell;
+}
+
+.profile-form input {
+	display: table-cell;
+	margin-left: 75px;
+	width: 305px;
+}
+
+.profile-button .btn {
+	width: 30%;
+	padding-right: 27px;
+	margin-top: 20px;
+	margin-left: 163px;
+}
+
 /*----media query for less than 600 screen size----*/
 
-@media only screen and (max-width: 600px){
-	.row{
+@media only screen and (max-width: 600px) {
+	.row {
 		text-align: center;
 	}
-	.col-2, .col-3, .col-4{
+	.col-2, .col-3, .col-4 {
 		flex-basis: 100%;
 	}
-	.single-product .row{
+	.single-product .row {
 		text-align: left;
 	}
-	.single-product .col-2{
+	.single-product .col-2 {
 		padding: 20px 0;
 	}
-	.single-product h1{
+	.single-product h1 {
 		font-size: 26px;
 		line-height: 32px;
 	}
-	.cart-info p{
+	.cart-info p {
 		display: none;
 	}
 }

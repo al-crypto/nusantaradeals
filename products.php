@@ -15,7 +15,11 @@
     }
     return $rows;
   	}
-  	$produk = query("SELECT * FROM products");
+	$produk = query("SELECT * FROM products");
+	$lowestprice = query("SELECT * FROM products ORDER BY price ASC");
+	$highestprice = query("SELECT * FROM products ORDER BY price DESC");
+	$sortrating = query("SELECT * FROM products ORDER BY rating DESC");
+	$sortpopularity = query("SELECT * FROM products ORDER BY viewers DESC");
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +44,7 @@
 		<div class="navbar">
 			<div class="logo">
 				<!-- ini buat pasang gambar logo startup kita lebarnya diatur 125px -->
-				<a href="index.php"><img src="images/logo.png" width="125px"></a>
+				<a href="index.php"><img src="images/NusantaraDeals.png" width="125px"></a>
 			</div>
 			<nav>
 				<!-- ini list buat menu-menu di kanan pojok atas -->
@@ -60,32 +64,104 @@
 	<div class="small-container">
 		<div class="row row-2">
 			<h2>All Products</h2>
-			<select>
-				<option>Default Shorting</option>
-				<option>Short by Price</option>
-				<option>Short by Popularity</option>
-				<option>Short by Rating</option>
-				<option>Short by Sale</option>
+			<select id="select-sort" onchange="location.reload()">
+				<option>Default Sorting</option>
+				<option>Sort by Lowest Price</option>
+				<option>Sort by Highest Price</option>
+				<option>Sort by Popularity</option>
+				<option>Sort by Rating</option>
+				<option>Sort by Sale</option>
 			</select>
 		</div>
 
-		<div class="row">
-			<?php foreach ($produk as $prd): ?>
-				<div class="col-4">
-					<a href="products-detail.php?id=<?= $prd->productID?>">
-						<img src="<?= $prd->thumbnail ?>">
-						<h4><?= $prd->productName?></h4>
-					</a>
-					<div class="rating">
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star-o"></i>
+		<div id="sorting-default">
+			<div class="row">
+				<?php foreach ($produk as $prd): ?>
+					<div class="col-4">
+						<a href="products-detail.php?id=<?= $prd->productID?>">
+							<img src="<?= $prd->thumbnail ?>">
+							<h4><?= $prd->productName?></h4>
+						</a>
+						<div class="rating">
+							<?php for($x=0; $x<$prd->rating; $x++) echo '<i class="fa fa-star"></i>'; for($x=0; $x<5-$prd->rating; $x++) echo '<i class="fa fa-star-o"></i>';?>
+						</div>
+						<p>Rp <?= $prd->price?></p>
+						<h6><i class="fa fa-eye"></i> <?= $prd->viewers?></h6>
 					</div>
-					<p>Rp <?= $prd->price?></p>
-				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
+			</div>
+		</div>
+
+		<div id="sorting-lowest-price">
+			<div class="row">
+				<?php foreach ($lowestprice as $lpr): ?>
+					<div class="col-4">
+						<a href="products-detail.php?id=<?= $lpr->productID?>">
+							<img src="<?= $lpr->thumbnail ?>">
+							<h4><?= $lpr->productName?></h4>
+						</a>
+						<div class="rating">
+						<?php for($x=0; $x<$lpr->rating; $x++) echo '<i class="fa fa-star"></i>'; for($x=0; $x<5-$lpr->rating; $x++) echo '<i class="fa fa-star-o"></i>';?>
+						</div>
+						<p>Rp <?= $lpr->price?></p>
+						<h6><i class="fa fa-eye"></i> <?= $lpr->viewers?></h6>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+
+		<div id="sorting-highest-price">
+			<div class="row">
+				<?php foreach ($highestprice as $hpr): ?>
+					<div class="col-4">
+						<a href="products-detail.php?id=<?= $hpr->productID?>">
+							<img src="<?= $hpr->thumbnail ?>">
+							<h4><?= $hpr->productName?></h4>
+						</a>
+						<div class="rating">
+						<?php for($x=0; $x<$hpr->rating; $x++) echo '<i class="fa fa-star"></i>'; for($x=0; $x<5-$hpr->rating; $x++) echo '<i class="fa fa-star-o"></i>';?>
+						</div>
+						<p>Rp <?= $hpr->price?></p>
+						<h6><i class="fa fa-eye"></i> <?= $hpr->viewers?></h6>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+
+		<div id="sorting-rating">
+			<div class="row">
+				<?php foreach ($sortrating as $rt): ?>
+					<div class="col-4">
+						<a href="products-detail.php?id=<?= $rt->productID?>">
+							<img src="<?= $rt->thumbnail ?>">
+							<h4><?= $rt->productName?></h4>
+						</a>
+						<div class="rating">
+							<?php for($x=0; $x<$rt->rating; $x++) echo '<i class="fa fa-star"></i>'; for($x=0; $x<5-$rt->rating; $x++) echo '<i class="fa fa-star-o"></i>';?>
+						</div>
+						<p>Rp <?= $rt->price?></p>
+						<h6><i class="fa fa-eye"></i> <?= $rt->viewers?></h6>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+
+		<div id="sorting-popularity">
+			<div class="row">
+				<?php foreach ($sortpopularity as $ppl): ?>
+					<div class="col-4">
+						<a href="products-detail.php?id=<?= $ppl->productID?>">
+							<img src="<?= $ppl->thumbnail ?>">
+							<h4><?= $ppl->productName?></h4>
+						</a>
+						<div class="rating">
+							<?php for($x=0; $x<$ppl->rating; $x++) echo '<i class="fa fa-star"></i>'; for($x=0; $x<5-$ppl->rating; $x++) echo '<i class="fa fa-star-o"></i>';?>
+						</div>
+						<p>Rp <?= $ppl->price?></p>
+						<h6><i class="fa fa-eye"></i> <?= $ppl->viewers?></h6>
+					</div>
+				<?php endforeach; ?>
+			</div>
 		</div>
 		
 		<div class="page-btn">
@@ -111,7 +187,7 @@
 					</div>
 				</div>
 				<div class="footer-col-2">
-					<img src="images/logo-white.png">
+					<img src="images/NusantaraDeals-White.png">
 					<p>Kami mempunyai tujuan untuk mengangkat pasar fashion lokal asli Nusantara.</p>
 				</div>
 				<div class="footer-col-3">
@@ -149,6 +225,35 @@
 			else {
 				MenuItems.style.maxHeight = "0px";
 			}
+		}
+
+		var sorting = document.getElementById("select-sort");
+		var sortDefault = document.getElementById("sorting-default");
+		var sortLowestPrice = document.getElementById("sorting-lowest-price");
+		var sortHighestPrice = document.getElementById("sorting-highest-price");
+		var sortingByRating = document.getElementById("sorting-rating");
+		var sortingByPopularity = document.getElementById("sorting-popularity");
+
+		sortDefault.style.display = "none";
+		sortLowestPrice.style.display = "none";
+		sortHighestPrice.style.display = "none";
+		sortingByRating.style.display = "none";
+		sortingByPopularity.style.display = "none";
+	  	
+		if(sorting.value === "Sort by Lowest Price"){
+			sortLowestPrice.style.display = "block";
+		}
+		else if(sorting.value === "Sort by Highest Price"){
+			sortHighestPrice.style.display = "block";
+		}
+		else if(sorting.value === "Sort by Rating"){
+			sortingByRating.style.display = "block";
+		}
+		else if(sorting.value === "Sort by Popularity"){
+			sortingByPopularity.style.display = "block";
+		}
+		else{
+			sortDefault.style.display = "block";
 		}
 	</script>
 

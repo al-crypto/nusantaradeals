@@ -4,22 +4,44 @@
 	$DATABASE_PASS = '';
 	$DATABASE_NAME = 'web';
 	$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+	$error = false;
 
-	function query($query)  {
-    global $conn;
+	function query($query){
+		global $conn;
+		global $error;
 
-    $result = mysqli_query($conn, $query);
-    $rows = [];
-    while($row = mysqli_fetch_object($result)){
-      $rows[]=$row;
-    }
-    return $rows;
-  	}
-  	$produklain = query("SELECT * FROM products");
-  	$produk = query("SELECT * FROM products WHERE productID=".$_GET["id"]);
-  	$parameter = $_GET["id"];
-  	$detail = query("SELECT * FROM product_details WHERE productID=".$_GET["id"]);
-  	$gambar = query("SELECT * FROM thumbnail WHERE productID=".$_GET["id"]);
+		$result = mysqli_query($conn, $query);
+		$rows = [];
+
+		if(!$result){
+			$error = true;
+			return;
+		}
+
+		while($row = mysqli_fetch_object($result)){
+		$rows[]=$row;
+		}
+		
+		if(count($rows) < 1){
+			$error = true;
+			return;
+		}
+
+		return $rows;
+	}
+
+	$produklain = query("SELECT * FROM products");
+
+	if(isset($_GET["id"])){
+		$parameter = $_GET["id"];
+		$produk = query("SELECT * FROM products WHERE productID=".$_GET["id"]);
+		$detail = query("SELECT * FROM product_details WHERE productID=".$_GET["id"]);
+		$gambar = query("SELECT * FROM thumbnail WHERE productID=".$_GET["id"]);
+		$sizes = query("SELECT * FROM size WHERE productID =" .$_GET["id"]);
+	}
+	else {
+		$error = true;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +66,7 @@
 		<div class="navbar">
 			<div class="logo">
 				<!-- ini buat pasang gambar logo startup kita lebarnya diatur 125px -->
-				<a href="index.php"><img src="images/logo.png" width="125px"></a>
+				<a href="index.php"><img src="images/NusantaraDeals.png" width="125px"></a>
 			</div>
 			<nav>
 				<!-- ini list buat menu-menu di kanan pojok atas -->
@@ -64,6 +86,7 @@
 	<!------- single product details -------->
 
 	<div class="small-container single-product">
+	  	<?php if(!$error) : ?>
 		<div class="row">
 
 			<div class="col-2">
@@ -79,22 +102,30 @@
 			</div>
 
 			<div class="col-2">
-				<p>Home / T-Shirt</p>
-				<h1><?= $produk[0]->productName ?></h1>
-				<h4>Rp <?= $produk[0]->price ?></h4>
-				<select>
-					<option value="">Select Size</option>
-					<option value="">XL</option>
-					<option value="">L</option>
-					<option value="">M</option>
-				</select>
-				<input type="number" name="1">
-				<a href="" class="btn">Add To Cart</a>
-				<h3>Product Details <i class="fa fa-indent"></i></h3>
-				<br>
-				<p><?= $detail[0]->description ?></p>
+				
+					<p>Home / T-Shirt</p>
+					<h1><?= $produk[0]->productName ?></h1>
+					<h4>Rp <?= $produk[0]->price ?></h4>
+					<form action="addtocart.php" method="GET">
+						<input type="hidden" name="productID" value=<?= $produk[0]->productID?>>
+						<select name="SizeDipilih" >
+							<option value="">Select Size</option>
+							<?php foreach ($sizes as $size): ?>
+								<option value="<?=$size->value?>"><?=$size->value?></option>
+							<?php endforeach; ?>
+						</select>
+					<input id="quantity" onchange="validate()" type="number" name="jml">
+					<button class="btn" type="submit" name="submit">Add To Cart</button>
+					</form>
+					<h3>Product Details <i class="fa fa-indent"></i></h3>
+					<br>
+					<p><?= $detail[0]->description ?></p>
 			</div>
 		</div>
+		<?php else : ?>
+			<h1>404</h1>
+			<h3>Product Not Found</h3>
+		<?php endif;?>
 	</div>
 
 	<!--------title-------->
@@ -145,7 +176,7 @@
 					</div>
 				</div>
 				<div class="footer-col-2">
-					<img src="images/logo-white.png">
+					<img src="images/NusantaraDeals-White.png">
 					<p>Kami mempunyai tujuan untuk mengangkat pasar fashion lokal asli Nusantara</p>
 				</div>
 				<div class="footer-col-3">
@@ -182,6 +213,12 @@
 			}
 			else {
 				MenuItems.style.maxHeight = "0px";
+			}
+		}
+		const quantity = document.getElementById("quantity");
+		function validate() {
+			if(quantity.value < 1) {
+				quantity.value = 1
 			}
 		}
 	</script>

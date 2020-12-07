@@ -4,33 +4,54 @@ $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
 $DATABASE_NAME = 'web';
+
 // Try and connect using the info above.
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+
 if (mysqli_connect_errno()) {
     // If there is an error with the connection, stop the script and display the error.
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
+
+if (!isset($_POST['username'],
+$_POST['password'],
+$_POST['email'],
+$_POST['name'],
+$_POST['birth'],
+$_POST['phone'],
+$_POST['address'])) {
     // Could not get the data that should have been sent.
     exit('Please complete the registration form!');
 }
+
 // Make sure the submitted registration values are not empty.
-if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+if (
+    empty($_POST['username']) ||
+    empty($_POST['password']) ||
+    empty($_POST['email'] ||
+        $_POST['name'] ||
+        $_POST['birth'] ||
+        $_POST['phone'] ||
+        $_POST['address'])
+) {
     // One or more values are empty.
     exit('Please complete the registration form');
 }
+
 // Email Validation
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-	exit('Email is not valid!');
+    exit('Email is not valid!');
 }
 // Invalid Characters Validation
 if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
     exit('Username is not valid!');
 }
+
 // Character Length Check
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-	exit('Password must be between 5 and 20 characters long!');
+    exit('Password must be between 5 and 20 characters long!');
 }
+
 // We need to check if the account with that username exists.
 if ($stmt = $con->prepare('SELECT id, password FROM user WHERE username = ?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
@@ -43,12 +64,12 @@ if ($stmt = $con->prepare('SELECT id, password FROM user WHERE username = ?')) {
         echo 'Username exists, please choose another!';
     } else {
         // Username doesnt exists, insert new account
-        if ($stmt = $con->prepare('INSERT INTO user (username, password, email) VALUES (?, ?, ?)')) {
+        if ($stmt = $con->prepare('INSERT INTO user (username, password, email, name, birth, phone, address) VALUES (?, ?, ?, ?, ?, ?, ?)')) {
             // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+            $stmt->bind_param('sssssss', $_POST['username'], $password, $_POST['email'], $_POST['name'], $_POST['birth'], $_POST['phone'], $_POST['address']);
             $stmt->execute();
-            // echo 'You have successfully registered, you can now login!';
+            echo 'You have successfully registered, you can now login!';
             header('Location: index.php');
         } else {
             // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
@@ -60,4 +81,5 @@ if ($stmt = $con->prepare('SELECT id, password FROM user WHERE username = ?')) {
     // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
     echo 'Could not prepare statement!';
 }
+
 $con->close();

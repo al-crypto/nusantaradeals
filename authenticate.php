@@ -48,4 +48,3 @@ if ($stmt = $con->prepare('SELECT id, password FROM user WHERE username = ?')) {
 
 	$stmt->close();
 }
-?>
